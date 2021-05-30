@@ -1,4 +1,4 @@
- package kodlamaio.northwind.business.concretes;
+  package kodlamaio.northwind.business.concretes;
 
 
 import java.util.List;
@@ -13,6 +13,7 @@ import kodlamaio.northwind.business.abstracts.ProductService;
 import kodlamaio.northwind.core.utilities.results.*;
 import kodlamaio.northwind.dataAccess.abstracts.ProductDao;
 import kodlamaio.northwind.entities.concretes.Product;
+import kodlamaio.northwind.entities.dtos.ProductWithCategoryDto;
 
 @Service
 public class ProductManager implements ProductService{	
@@ -97,6 +98,12 @@ public class ProductManager implements ProductService{
 	public DataResult<List<Product>> getByNameAndCategory(String productName, int categoryId) {
 		return new SuccessDataResult<List<Product>>
 		(this.productDao.getByNameAndCategory(productName,categoryId),"Data Listelendi");
+	}
+
+	@Override
+	public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+		return new SuccessDataResult<List<ProductWithCategoryDto>>
+		(this.productDao.getProductWithCategoryDetails(),"Data Listelendi");
 	}
 
 }
